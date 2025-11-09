@@ -11,23 +11,23 @@
     "build-pwa": "npx vite build && echo PWA build completed!"
   },
   "dependencies": {
-  "clsx": "^2.1.1",
-  "js-yaml": "^4.1.0",
-  "pinia": "^3.0.3",
-  "vue": "^3.5.18",
-  "vuedraggable": "^4.1.0",
-  "autoprefixer": "^10.4.20"
-},
-"devDependencies": {
-  "@tailwindcss/postcss": "^4.1.12",
-  "@vitejs/plugin-vue": "^6.0.1",
-  "miniflare": "^4.20250803.0",
-  "postcss": "^8.4.38",
-  "tailwindcss": "^4.1.12",
-  "vite": "^7.1.2",
-  "vite-plugin-pwa": "^1.0.3",
-  "workbox-window": "^7.3.0"
-}
+    "clsx": "^2.1.1",
+    "js-yaml": "^4.1.0",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.18",
+    "vuedraggable": "^4.1.0",
+    "autoprefixer": "^10.4.20"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.12",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "miniflare": "^4.20250803.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^4.1.12",
+    "vite": "^7.1.2",
+    "vite-plugin-pwa": "^1.0.3",
+    "workbox-window": "^7.3.0"
+  },
   "description": "18xsub - 基于 Cloudflare 的高性能订阅转换和管理工具",
   "keywords": [
     "proxy",
