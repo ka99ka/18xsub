@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- PWA Meta Tags -->
-    <meta name="description" content="基于 Cloudflare 的订阅转换和管理工具" />
+    <meta name="description" content="基于 Cloudflare 的高性能订阅转换和管理工具 - 18xsub" />
     
     <!-- 沉浸式状态栏配置 - 兼容浅色和深色模式 -->
     <meta name="theme-color" content="#f8fafc" />
@@ -15,7 +15,7 @@
     <!-- iOS PWA 配置 -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="MiSub" />
+    <meta name="apple-mobile-web-app-title" content="18xsub" />
     <!-- 强制iOS状态栏透明 -->
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
@@ -51,10 +51,59 @@
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />
     
-    <title>MISUB</title>
+    <title>18xsub - 高性能订阅管理工具</title>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://api.github.com" />
+    <link rel="preconnect" href="https://raw.githubusercontent.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "18xsub",
+      "description": "基于 Cloudflare 的高性能订阅转换和管理工具",
+      "url": "https://18xsub.pages.dev",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CNY"
+      },
+      "featureList": [
+        "节点地区自动识别",
+        "多格式订阅支持",
+        "Telegram自动推送",
+        "批量节点管理",
+        "访客模式访问"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('SW registered: ', registration);
+            })
+            .catch(registrationError => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
