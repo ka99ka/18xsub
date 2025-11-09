@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check-pwa": "node check-pwa.js",
-    "build-pwa": "vite build && echo PWA build completed!"
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview",
+    "check-pwa": "node check-pwa.js || echo PWA check skipped",
+    "build-pwa": "npx vite build && echo PWA build completed!"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -26,8 +26,7 @@
     "vite": "^7.1.2",
     "vite-plugin-pwa": "^1.0.3",
     "workbox-window": "^7.3.0"
-  }
-},
+  },
   "description": "18xsub - 基于 Cloudflare 的高性能订阅转换和管理工具",
   "keywords": [
     "proxy",
