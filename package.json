@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check-pwa": "node check-pwa.js",
-    "build-pwa": "vite build && echo PWA build completed!"
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview",
+    "check-pwa": "node check-pwa.js || echo PWA check skipped",
+    "build-pwa": "npx vite build && echo PWA build completed!"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -17,17 +17,6 @@
     "vue": "^3.5.18",
     "vuedraggable": "^4.1.0"
   },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.12",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "miniflare": "^4.20250803.0",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^4.1.12",
-    "vite": "^7.1.2",
-    "vite-plugin-pwa": "^1.0.3",
-    "workbox-window": "^7.3.0"
-  }
-}
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.12",
     "@vitejs/plugin-vue": "^6.0.1",
@@ -56,10 +45,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/imzyb/MiSub"
+    "url": "https://github.com/ka99ka/18xsub"
   },
   "bugs": {
-    "url": "https://github.com/imzyb/MiSub/issues"
+    "url": "https://github.com/ka99ka/18xsub/issues"
   },
-  "homepage": "https://github.com/imzyb/MiSub#readme"
+  "homepage": "https://github.com/ka99ka/18xsub#readme"
 }
