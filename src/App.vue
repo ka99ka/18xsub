@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useThemeStore } from './stores/theme';
 import { useSessionStore } from './stores/session';
 import { useToastStore } from './stores/toast';
@@ -13,6 +13,7 @@ import Toast from './components/Toast.vue';
 import Footer from './components/Footer.vue';
 import PWAUpdatePrompt from './components/PWAUpdatePrompt.vue';
 import PWADevTools from './components/PWADevTools.vue';
+import VisitorPage from './components/VisitorPage.vue';
 
 const themeStore = useThemeStore();
 const { theme } = storeToRefs(themeStore);
@@ -25,10 +26,22 @@ const { checkSession, login, logout } = sessionStore;
 const toastStore = useToastStore();
 const { toast: toastState } = storeToRefs(toastStore);
 
+// Visitor mode state
+const isVisitorMode = ref(false);
+
 onMounted(() => {
   initTheme();
   checkSession();
 });
+
+// Toggle visitor mode
+const enterVisitorMode = () => {
+  isVisitorMode.value = true;
+};
+
+const exitVisitorMode = () => {
+  isVisitorMode.value = false;
+};
 </script>
 
 <template>
@@ -36,24 +49,48 @@ onMounted(() => {
     :class="theme" 
     class="min-h-screen flex flex-col text-gray-800 dark:text-gray-200 transition-colors duration-300 bg-gray-100 dark:bg-gray-950"
   >
-    <Header :is-logged-in="sessionState === 'loggedIn'" @logout="logout" />
+    <!-- Header -->
+    <Header 
+      :is-logged-in="sessionState === 'loggedIn'" 
+      :is-visitor-mode="isVisitorMode"
+      @logout="logout"
+      @enter-visitor="enterVisitorMode"
+      @exit-visitor="exitVisitorMode"
+    />
 
+    <!-- Main Content -->
     <main 
       class="grow"
       :class="{
-        'flex items-center justify-center': sessionState !== 'loggedIn' && sessionState !== 'loading',
-        'overflow-y-auto': sessionState === 'loggedIn' || sessionState === 'loading',
-        'ios-content-offset': sessionState === 'loggedIn' || sessionState === 'loading'
+        'flex items-center justify-center': sessionState !== 'loggedIn' && sessionState !== 'loading' && !isVisitorMode,
+        'overflow-y-auto': sessionState === 'loggedIn' || sessionState === 'loading' || isVisitorMode,
+        'ios-content-offset': sessionState === 'loggedIn' || sessionState === 'loading' || isVisitorMode
       }"
     >
+      <!-- Loading State -->
       <DashboardSkeleton v-if="sessionState === 'loading'" />
-      <Dashboard v-else-if="sessionState === 'loggedIn' && initialData" :data="initialData" />
+      
+      <!-- Dashboard -->
+      <Dashboard 
+        v-else-if="sessionState === 'loggedIn' && initialData && !isVisitorMode" 
+        :data="initialData" 
+      />
+      
+      <!-- Visitor Mode -->
+      <VisitorPage v-else-if="isVisitorMode" @exit-visitor="exitVisitorMode" />
+      
+      <!-- Login -->
       <Login v-else :login="login" />
     </main>
     
+    <!-- Toast Notifications -->
     <Toast :show="toastState.id" :message="toastState.message" :type="toastState.type" />
+    
+    <!-- PWA Components -->
     <PWAUpdatePrompt />
     <PWADevTools />
+    
+    <!-- Footer -->
     <Footer />
   </div>
 </template>
