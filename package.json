@@ -1,5 +1,5 @@
 {
-  "name": "18xsub-vue",
+  "name": "misub-vue",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -26,7 +26,8 @@
     "vite": "^7.1.2",
     "vite-plugin-pwa": "^1.0.3",
     "workbox-window": "^7.3.0"
-  },
+  }
+},
   "description": "18xsub - 基于 Cloudflare 的高性能订阅转换和管理工具",
   "keywords": [
     "proxy",
