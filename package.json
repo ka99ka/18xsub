@@ -2,13 +2,10 @@
   "name": "18xsub-vue",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "dev": "npx vite",
-    "build": "npx vite build",
-    "preview": "npx vite preview",
-    "check-pwa": "node check-pwa.js || echo PWA check skipped",
-    "build-pwa": "npx vite build && echo PWA build completed!"
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -27,29 +24,5 @@
     "vite": "^7.1.2",
     "vite-plugin-pwa": "^1.0.3",
     "workbox-window": "^7.3.0"
-  },
-  "description": "18xsub - 基于 Cloudflare 的高性能订阅转换和管理工具",
-  "keywords": [
-    "proxy",
-    "subscription",
-    "vless",
-    "vmess",
-    "trojan",
-    "clash",
-    "sing-box",
-    "surge",
-    "loon",
-    "cloudflare",
-    "workers"
-  ],
-  "author": "18xsub Team",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ka99ka/18xsub"
-  },
-  "bugs": {
-    "url": "https://github.com/ka99ka/18xsub/issues"
-  },
-  "homepage": "https://github.com/ka99ka/18xsub#readme"
+  }
 }
